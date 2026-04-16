@@ -79,6 +79,7 @@
         display: flex;
         gap: 2rem;
         pointer-events: all;
+        margin-left: 4rem;
       }
       .nav-links a {
         color: rgba(255, 255, 255, 0.3);
@@ -1470,6 +1471,447 @@
       button {
         font-family: "DM Sans", sans-serif;
       }
+
+      /* ═══════════════════════════════════════════════════
+   HAMBURGER MENU
+═══════════════════════════════════════════════════ */
+      #hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        pointer-events: all;
+        padding: 0.4rem;
+        background: none;
+        border: none;
+        z-index: 200;
+        margin-left: auto;
+      }
+      #hamburger span {
+        display: block;
+        width: 22px;
+        height: 1.5px;
+        background: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
+      }
+      #hamburger.open span:nth-child(1) {
+        transform: translateY(6.5px) rotate(45deg);
+      }
+      #hamburger.open span:nth-child(2) {
+        opacity: 0;
+        transform: scaleX(0);
+      }
+      #hamburger.open span:nth-child(3) {
+        transform: translateY(-6.5px) rotate(-45deg);
+      }
+
+      #mobile-menu {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(8, 8, 8, 0.97);
+        z-index: 150;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2.5rem;
+      }
+      #mobile-menu.open {
+        display: flex;
+      }
+      #mobile-menu a {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 1.1rem;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
+        text-decoration: none;
+        font-family: "DM Sans", sans-serif;
+        font-weight: 400;
+        transition: color 0.2s;
+      }
+      #mobile-menu a:hover,
+      #mobile-menu a.active {
+        color: #c9a227;
+      }
+      #mobile-menu .m-close {
+        position: absolute;
+        top: 1.5rem;
+        right: 1.5rem;
+        background: none;
+        border: none;
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+        font-family: sans-serif;
+      }
+
+      /* ═══════════════════════════════════════════════════
+   TABLET  (max 1024px)
+═══════════════════════════════════════════════════ */
+      @media (max-width: 1024px) {
+        nav {
+          padding: 1.2rem 2rem;
+        }
+        .nav-links {
+          gap: 1.2rem;
+        }
+        .nav-links a {
+          font-size: 0.6rem;
+          letter-spacing: 0.15em;
+        }
+
+        #progress {
+          left: 1.2rem;
+        }
+
+        #s1 .content {
+          gap: 2.5rem;
+          padding: 0 2rem;
+        }
+        #s1 h1 {
+          font-size: clamp(2.4rem, 4.5vw, 4.5rem);
+        }
+
+        .two-col,
+        .two-col-wide {
+          gap: 2.5rem;
+          padding: 1.5rem 2rem;
+        }
+        .full-col {
+          padding: 1.5rem 2rem;
+        }
+
+        #s5 .benefits-grid {
+          padding: 0 2rem;
+          gap: 1rem;
+        }
+        #s5 .header {
+          padding: 0 2rem;
+        }
+
+        #s6 .stats-grid {
+          padding: 0 2rem;
+        }
+
+        #s8 .compare-wrap {
+          max-width: 100%;
+          padding: 0;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════
+   MOBILE  (max 768px)
+═══════════════════════════════════════════════════ */
+      @media (max-width: 768px) {
+        /* NAV: hide links, show hamburger */
+        .nav-links {
+          display: none !important;
+        }
+        #hamburger {
+          display: flex;
+        }
+        nav {
+          padding: 1.1rem 1.4rem;
+        }
+
+        /* Progress bar hidden on mobile (too cramped) */
+        #progress {
+          display: none;
+        }
+
+        /* Dots repositioned */
+        #dots {
+          bottom: 1.2rem;
+        }
+
+        /* Scroll hint */
+        #scroll-hint {
+          right: 1.2rem;
+          bottom: 1.2rem;
+        }
+
+        /* ── HERO ── */
+        #s1 .content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 5rem 1.4rem 2rem;
+          text-align: center;
+          align-content: center;
+        }
+        #s1 .left {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        #s1 h1 {
+          font-size: clamp(2.6rem, 10vw, 4rem);
+        }
+        #s1 .sub {
+          font-size: 0.85rem;
+          max-width: 100%;
+        }
+        #s1 .cta-row {
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        #s1 .metrics {
+          justify-content: center;
+          gap: 1.8rem;
+        }
+        #s1 .divider-line {
+          justify-content: center;
+        }
+        #s1 .product-img-wrap {
+          max-width: 90vw;
+        }
+        #s1 .product-badge {
+          bottom: -0.7rem;
+          right: 0;
+        }
+
+        /* ── TWO-COL → SINGLE ── */
+        .two-col,
+        .two-col-wide {
+          grid-template-columns: 1fr !important;
+          gap: 2rem;
+          padding: 5rem 1.4rem 2rem;
+          overflow-y: auto;
+          align-items: start;
+        }
+
+        .full-col {
+          padding: 5rem 1.4rem 2rem;
+        }
+
+        /* Generic title scale */
+        h2.title {
+          font-size: clamp(1.8rem, 7vw, 2.6rem);
+        }
+        p.body {
+          font-size: 0.85rem;
+          max-width: 100%;
+        }
+
+        /* ── PRODUCT S2 ── */
+        #s2 .divline {
+          display: none;
+        }
+        #s2 .product-card {
+          padding: 1.5rem;
+        }
+        #s2 .product-card .product-img {
+          max-width: 260px;
+        }
+
+        /* ── INGREDIENTS S3 ── */
+        #s3 .ing-stats {
+          gap: 1.2rem;
+          flex-wrap: wrap;
+        }
+        #s3 .ing-stat-val {
+          font-size: 1.5rem;
+        }
+
+        /* ── NUTRITION S4 ── */
+        #s4 .nut-left {
+          gap: 1.5rem;
+        }
+        #s4 .circle-wrap {
+          width: 130px;
+          height: 130px;
+        }
+        #s4 .nut-label {
+          width: 110px;
+          font-size: 0.75rem;
+        }
+        #s4 .nut-val {
+          font-size: 0.72rem;
+        }
+        #s4 .nut-daily {
+          font-size: 0.6rem;
+          width: 2.5rem;
+        }
+
+        /* ── BENEFITS S5 ── */
+        #s5 .benefits-grid {
+          grid-template-columns: 1fr 1fr;
+          padding: 0 1.4rem;
+          gap: 0.8rem;
+        }
+        #s5 .header {
+          padding: 0 1.4rem;
+        }
+        #s5 .b-desc {
+          font-size: 0.72rem;
+        }
+        #s5 > div {
+          padding: 0 1.4rem;
+          gap: 1.5rem;
+        }
+
+        /* ── STATS S6 ── */
+        #s6 .stats-grid {
+          grid-template-columns: 1fr 1fr;
+          padding: 0 1.4rem;
+        }
+        #s6 .stat-item {
+          border-right: none;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          padding: 1.5rem 0.5rem;
+        }
+        #s6 .stat-item:nth-child(odd) {
+          border-right: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        #s6 .stat-val {
+          font-size: clamp(1.8rem, 7vw, 2.5rem);
+        }
+        #s6 .quote {
+          display: none;
+        } /* too cramped on mobile */
+
+        /* ── TESTIMONIALS S7 ── */
+        #s7 .testi-wrap {
+          padding: 0 1.4rem;
+        }
+        #s7 .testi-text {
+          font-size: clamp(0.95rem, 3.5vw, 1.2rem);
+        }
+        #s7 .bigquote {
+          display: none;
+        }
+
+        /* ── COMPARE S8 ── */
+        #s8 .two-col-wide {
+          grid-template-columns: 1fr !important;
+          padding: 5rem 1.4rem 2rem;
+          gap: 1.5rem;
+          overflow-y: auto;
+        }
+        #s8 .compare-wrap {
+          padding: 0;
+          max-width: 100%;
+        }
+        #s8 .compare-head div,
+        #s8 .compare-row div {
+          padding: 0.7rem 0.3rem;
+          font-size: 0.72rem;
+        }
+
+        /* ── HOW TO S9 ── */
+        #s9 .two-col {
+          padding: 5rem 1.4rem 2rem;
+          gap: 1.5rem;
+        }
+        #s9 .step-title {
+          font-size: 0.82rem;
+        }
+        #s9 .step-time {
+          display: none;
+        }
+        #s9 .step-detail {
+          padding: 1.5rem;
+        }
+        #s9 .step-detail h3 {
+          font-size: 1.3rem;
+        }
+        #s9 .step-detail p {
+          font-size: 0.78rem;
+        }
+        #s9 .step-num-big {
+          font-size: 2.5rem;
+        }
+
+        /* ── VARIANTS S10 ── */
+        #s10 .two-col {
+          padding: 5rem 1.4rem 2rem;
+          gap: 1.5rem;
+        }
+        #s10 .variant-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 0.5rem;
+        }
+        #s10 .variant-btn {
+          padding: 0.6rem 0.5rem;
+        }
+        #s10 .variant-btn .v-name {
+          font-size: 0.7rem;
+        }
+        #s10 .variant-display {
+          padding: 1.5rem;
+        }
+        #s10 .variant-display .product-img {
+          max-width: 220px;
+        }
+
+        /* ── CTA S11 ── */
+        #s11 .full-col {
+          padding: 5rem 1.4rem 2rem;
+          overflow-y: auto;
+        }
+        #s11 .packs {
+          flex-direction: column;
+          gap: 0.8rem;
+        }
+        #s11 .pack {
+          max-width: 100%;
+          min-width: unset;
+        }
+        #s11 .cta-btns {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        #s11 .cta-btns button {
+          text-align: center;
+          width: 100%;
+        }
+        #s11 .trust-badges {
+          gap: 1rem;
+        }
+        #s11 .badge {
+          font-size: 0.65rem;
+        }
+        #s11 .pack-popular {
+          font-size: 0.5rem;
+        }
+
+        /* Buttons full-width on mobile */
+        .btn-gold,
+        .btn-outline {
+          padding: 0.9rem 1.2rem;
+          font-size: 0.68rem;
+        }
+      }
+
+      /* ═══════════════════════════════════════════════════
+   SMALL MOBILE  (max 480px)
+═══════════════════════════════════════════════════ */
+      @media (max-width: 480px) {
+        #s1 h1 {
+          font-size: clamp(2.2rem, 11vw, 3rem);
+        }
+        #s5 .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+        #s6 .stats-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+        #s10 .variant-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        #s8 .compare-head div,
+        #s8 .compare-row div {
+          font-size: 0.65rem;
+          padding: 0.6rem 0.2rem;
+        }
+        .two-col,
+        .two-col-wide {
+          padding: 4.5rem 1.1rem 1.5rem;
+        }
+        .full-col {
+          padding: 4.5rem 1.1rem 1.5rem;
+        }
+      }
     </style>
   </head>
   <body>
@@ -1493,6 +1935,27 @@
         <a href="#s11" data-sec="10">Comprar</a>
       </div>
     </nav>
+
+    <!-- HAMBURGER BUTTON (mobile) -->
+    <button id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+
+    <!-- MOBILE MENU OVERLAY -->
+    <div id="mobile-menu">
+      <button class="m-close" onclick="toggleMenu()">&times;</button>
+      <a href="#s1" onclick="mobileNav(0)">Início</a>
+      <a href="#s2" onclick="mobileNav(1)">Produto</a>
+      <a href="#s3" onclick="mobileNav(2)">Ingredientes</a>
+      <a href="#s4" onclick="mobileNav(3)">Nutrição</a>
+      <a href="#s5" onclick="mobileNav(4)">Benefícios</a>
+      <a href="#s6" onclick="mobileNav(5)">Números</a>
+      <a href="#s7" onclick="mobileNav(6)">Depoimentos</a>
+      <a href="#s8" onclick="mobileNav(7)">Comparar</a>
+      <a href="#s9" onclick="mobileNav(8)">Como Usar</a>
+      <a href="#s10" onclick="mobileNav(9)">Sabores</a>
+      <a href="#s11" onclick="mobileNav(10)">Comprar</a>
+    </div>
 
     <!-- PROGRESS -->
     <div id="progress">
@@ -2706,6 +3169,18 @@
         el.classList.add("active");
         document.getElementById("cta-buy-btn").textContent =
           "Comprar Agora — " + packPrices[i];
+      }
+
+      // ─── MOBILE MENU ────────────────────────────────────
+      function toggleMenu() {
+        const hb = document.getElementById("hamburger");
+        const mm = document.getElementById("mobile-menu");
+        hb.classList.toggle("open");
+        mm.classList.toggle("open");
+      }
+      function mobileNav(i) {
+        toggleMenu();
+        setTimeout(() => scrollToSection(i), 200);
       }
     </script>
   </body>
